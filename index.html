@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>給辜品睿的網站</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:black;
+    color:white;
+    font-family:sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+h1{
+    font-size:42px;
+    margin-bottom:60px;
+    letter-spacing:3px;
+}
+
+.container{
+    display:flex;
+    gap:40px;
+}
+
+.box{
+    width:220px;
+    height:160px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:0.3s;
+    border:2px solid #555;
+}
+
+/* 不同發光顏色 */
+.box:nth-child(1):hover{
+    color:#00ffff;
+    border-color:#00ffff;
+    box-shadow:0 0 20px #00ffff;
+    transform:scale(1.1);
+}
+.box:nth-child(2):hover{
+    color:#00ff88;
+    border-color:#00ff88;
+    box-shadow:0 0 20px #00ff88;
+    transform:scale(1.1);
+}
+.box:nth-child(3):hover{
+    color:#ffcc00;
+    border-color:#ffcc00;
+    box-shadow:0 0 20px #ffcc00;
+    transform:scale(1.1);
+}
+
+/* 影片淡入 */
+video{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:0;
+    animation:fadeIn 1s forwards;
+}
+
+@keyframes fadeIn{
+    to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<h1>給「辜品睿」的網站</h1>
+
+<div class="container">
+    <div class="box" onclick="play('say.mp4')">與我交流</div>
+    <div class="box" onclick="play('teach.mp4')">如何寫網頁</div>
+    <div class="box" onclick="goGame()">我的遊戲</div>
+</div>
+
+<!-- 背景音樂 -->
+<audio src="bg.mp3" autoplay loop></audio>
+
+<!-- 點擊音效 -->
+<audio id="clickSound" src="click.mp3"></audio>
+
+<script>
+function play(src){
+    document.getElementById("clickSound").play();
+    setTimeout(()=>{
+        document.body.innerHTML = '<video src="'+src+'" autoplay controls></video>';
+    },150);
+}
+
+function goGame(){
+    document.getElementById("clickSound").play();
+    setTimeout(()=>{
+        location.href="https://smalloll0haofeng.github.io/HTMLs";
+    },150);
+}
+</script>
+
+</body>
+</html>
